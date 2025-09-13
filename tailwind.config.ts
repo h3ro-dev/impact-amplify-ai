@@ -47,6 +47,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Academic color system
+        academic: {
+          primary: "hsl(var(--academic-primary))",
+          "primary-foreground": "hsl(var(--academic-primary-foreground))",
+          secondary: "hsl(var(--academic-secondary))",
+          "secondary-foreground": "hsl(var(--academic-secondary-foreground))",
+          accent: "hsl(var(--academic-accent))",
+          "accent-foreground": "hsl(var(--academic-accent-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -57,6 +66,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+      },
+      fontFamily: {
+        'crimson': ['Crimson Text', 'Georgia', 'serif'],
+        'source': ['Source Sans Pro', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",

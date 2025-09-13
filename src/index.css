@@ -1,24 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Academic Design System for Institute of One */
 
 @layer base {
   :root {
+    /* Academic Color Palette - HSL Format */
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
 
+    /* Academic Primary - Deep Blue */
+    --academic-primary: 225 83% 25%;
+    --academic-primary-foreground: 0 0% 98%;
+    
+    /* Academic Secondary - Burgundy */
+    --academic-secondary: 14 84% 25%;
+    --academic-secondary-foreground: 0 0% 98%;
+    
+    /* Academic Accent - Gold */
+    --academic-accent: 43 74% 49%;
+    --academic-accent-foreground: 222.2 84% 4.9%;
+
+    /* Scholarly Gradients */
+    --gradient-academic: linear-gradient(135deg, hsl(225, 83%, 25%), hsl(14, 84%, 25%));
+    --gradient-subtle: linear-gradient(180deg, hsl(225, 83%, 25%) 0%, hsl(225, 65%, 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(225, 83%, 25%) 0%, hsl(14, 84%, 25%) 100%);
+    
+    /* Academic Shadows */
+    --shadow-academic: 0 25px 50px -12px hsl(225, 83%, 25% / 0.25);
+    --shadow-elegant: 0 10px 30px -10px hsl(225, 83%, 25% / 0.3);
+    --shadow-glow: 0 0 40px hsl(43, 74%, 49% / 0.2);
+
+    /* Standard Design Tokens */
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 225 83% 25%;
+    --primary-foreground: 0 0% 98%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -26,33 +50,21 @@ All colors MUST be HSL.
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 43 74% 49%;
+    --accent-foreground: 222.2 84% 4.9%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 225 83% 25%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Academic Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-academic: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .dark {
@@ -101,5 +113,72 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 600;
+  }
+}
+
+/* Academic Components */
+@layer components {
+  .gradient-academic {
+    background: var(--gradient-academic);
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-subtle {
+    background: var(--gradient-subtle);
+  }
+
+  .shadow-academic {
+    box-shadow: var(--shadow-academic);
+  }
+
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .transition-academic {
+    transition: var(--transition-academic);
+  }
+
+  .academic-pattern {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(43, 74%, 49% / 0.1) 2px, transparent 2px),
+      radial-gradient(circle at 75% 75%, hsl(43, 74%, 49% / 0.05) 1px, transparent 1px);
+    background-size: 60px 60px, 30px 30px;
+  }
+
+  .knowledge-visualization {
+    background-image: 
+      linear-gradient(45deg, transparent 40%, hsl(43, 74%, 49% / 0.03) 50%, transparent 60%),
+      linear-gradient(-45deg, transparent 40%, hsl(43, 74%, 49% / 0.03) 50%, transparent 60%);
+    background-size: 20px 20px;
+  }
+
+  .academic-card {
+    @apply bg-card/95 backdrop-blur-sm border border-white/10 rounded-xl shadow-elegant;
+  }
+
+  .academic-input {
+    @apply bg-white/10 border border-white/20 rounded-lg px-4 py-3 text-white placeholder:text-white/60 focus:border-accent focus:ring-2 focus:ring-accent/20 transition-academic;
+  }
+
+  .academic-button {
+    @apply bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-4 rounded-xl shadow-glow hover:shadow-xl transition-academic hover:scale-105;
+  }
+
+  .academic-button-secondary {
+    @apply bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-6 py-3 rounded-lg transition-academic hover:scale-105;
   }
 }
