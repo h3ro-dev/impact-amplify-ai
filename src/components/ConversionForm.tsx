@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { GraduationCap, Clock, Shield, Zap } from "lucide-react";
+import { submitLead } from "@/lib/lead";
 
 const ConversionForm = () => {
   const [formData, setFormData] = useState({
@@ -14,8 +14,9 @@ const ConversionForm = () => {
     vision: ""
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    await submitLead(formData as any);
     // Note: Form submission will be handled once Supabase is connected
     console.log("Form submitted:", formData);
   };
